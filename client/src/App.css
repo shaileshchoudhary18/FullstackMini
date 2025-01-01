@@ -1,231 +1,152 @@
-.App {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f0f2f5;
+  color: #1c1e21;
 }
 
-.post {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
+.App {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
-.post:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  cursor: pointer;
-}
-.post .title {
-  flex: 20%;
-  border-bottom: 1px solid lightgray;
-  background-color: dodgerblue;
-  display: grid;
-  place-content: center;
-  color: white;
-}
-
-.post .body {
-  flex: 60%;
-  display: grid;
-  place-content: center;
-}
-
-.post .footer {
-  flex: 20%;
-  border-top: 1px solid lightgray;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  background-color: dodgerblue;
-  color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-/* CREATE POST PAGE CSS */
-
-.createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 500px;
-  height: auto;
-  padding: 20px;
-  border: 5px solid dodgerblue;
-  border-radius: 5px;
-}
-
-.formContainer #inputCreatePost {
-  height: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding-left: 10px;
-  font-size: 20px;
-}
-
-.formContainer button {
-  margin-top: 15px;
-  height: 40px;
-  border: none;
-  background-color: lightskyblue;
-  border-radius: 5px;
-  color: white;
-}
-
-.formContainer button:hover {
-  cursor: pointer;
-  background-color: dodgerblue;
-}
-
-span {
-  color: red;
-}
-
-/* NAVBAR */
 
 .navbar {
-  width: 100%;
-  height: 70px;
-  background-color: dodgerblue;
-  display: flex;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.navbar a {
-  margin-left: 20px;
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1877f2;
   text-decoration: none;
-  color: white;
+  transition: color 0.3s ease;
 }
 
-/* INDIVIDUAL POST */
-.postPage {
+.navbar-logo:hover {
+  color: #166fe5;
+}
+
+.navbar-links {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
+  gap: 1rem;
 }
 
-.leftSide {
-  flex: 50%;
-  height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
+.nav-link {
+  color: #65676b;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.rightSide {
-  flex: 50%;
-  height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
-  display: flex;
-  flex-direction: column;
+.nav-link:hover {
+  background-color: #f0f2f5;
+  color: #1877f2;
 }
 
-.rightSide .addCommentContainer {
-  flex: 20%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  margin-top: 25px;
-}
-
-.addCommentContainer input,
-button {
-  width: 200px;
-  height: 50px;
-  border-radius: 8px;
-  border: none;
-}
-
-.addCommentContainer button {
-  background-color: dodgerblue;
-  color: white;
-}
-
-.addCommentContainer input {
-  border: 2px solid dodgerblue;
-}
-
-.rightSide .listOfComments {
-  flex: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.listOfComments .comment {
-  width: 70%;
-  height: auto;
-  padding: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-#individual {
-  height: 500px;
-  width: 600px;
-}
-
-#individual .title,
-#individual .footer {
-  font-size: 30px;
-}
-
-#individual .body {
-  font-size: 25px;
-}
-
-/* LOGIN */
-
-.loginContainer {
+.navbar-auth {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  padding-top: 100px;
+  gap: 1rem;
 }
 
-.loginContainer input,
-button {
-  width: 200px;
-  height: 50px;
-  border-radius: 8px;
+.username {
+  font-weight: 500;
+  color: #1877f2;
+}
+
+.auth-link {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register {
+  background-color: #42b72a;
+  color: #ffffff;
+}
+
+.register:hover {
+  background-color: #36a420;
+}
+
+.login {
+  background-color: #e7f3ff;
+  color: #1877f2;
+}
+
+.login:hover {
+  background-color: #d0e8ff;
+}
+
+.logout {
+  background-color: #f0f2f5;
+  color: #65676b;
   border: none;
-  margin: 10px;
+  cursor: pointer;
 }
 
-.loginContainer button {
-  background-color: dodgerblue;
-  color: white;
+.logout:hover {
+  background-color: #e4e6eb;
+  color: #050505;
 }
 
-.loginContainer input {
-  border: 2px solid dodgerblue;
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar-links, .navbar-auth {
+    margin-top: 1rem;
+  }
+
+  .navbar-auth {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auth-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+

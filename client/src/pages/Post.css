@@ -1,0 +1,135 @@
+.postPage {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .postContent {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .postContent:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .postContent .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .postContent .body {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .postContent .footer {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .commentsSection {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .addCommentContainer {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .addCommentContainer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .addCommentContainer button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addCommentContainer button:hover {
+    background-color: #0056b3;
+  }
+  
+  .listOfComments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .comment {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .comment .commentContent {
+    flex-grow: 1;
+  }
+  
+  .comment .commentBody {
+    margin-bottom: 5px;
+  }
+  
+  .comment .commentUsername {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .comment button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment button:hover {
+    background-color: #c82333;
+  }
+  
+  @media (min-width: 768px) {
+    .postPage {
+      flex-direction: row;
+      gap: 20px;
+    }
+  
+    .postContent {
+      flex: 1;
+    }
+  
+    .commentsSection {
+      flex: 1;
+    }
+  }
+  
+  

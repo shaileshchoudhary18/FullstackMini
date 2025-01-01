@@ -1,12 +1,13 @@
-import React from 'react'
-import {Formik, Form, Field, ErrorMessage, } from 'formik';
+import React, { useState } from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './CreatePost.css';
 
 function CreatePost() {
-
     let navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const initialValues = {
         title: '',
@@ -20,46 +21,76 @@ function CreatePost() {
         username: Yup.string().min(3).max(20).required('You must input a username'),
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, { resetForm }) => {
+        setIsSubmitting(true);
         axios.post('http://localhost:3000/posts', data)
             .then((response) => {
+                resetForm();
                 navigate('/');
             })
-      };
+            .catch((error) => {
+                console.error('Error creating post:', error);
+            })
+            .finally(() => {
+                setIsSubmitting(false);
+            });
+    };
 
+    return (
+        <div className='create-post-page'>
+            <h1 className="page-title">Create a New Post</h1>
+            <Formik 
+                initialValues={initialValues} 
+                onSubmit={onSubmit} 
+                validationSchema={validationSchema}>
+                {({ isValid }) => (
+                    <Form className='form-container'>
+                        <div className="form-group">
+                            <label htmlFor="title">Title:</label>
+                            <Field 
+                                id="title"
+                                name="title" 
+                                placeholder="Enter your post title"
+                                className="input-field"
+                            />
+                            <ErrorMessage name="title" component="span" className="error-message" />
+                        </div>
 
-  return (
-    <div className='createPostPage'>
-        <Formik 
-        initialValues={initialValues} 
-        onSubmit= {onSubmit} 
-        validationSchema={validationSchema}>
-            {()=><Form className='formContainer'>
-                <label>Title:</label>
-                <ErrorMessage name="title" component="span"/>
-                <Field id="inputCreatePost"
-                 name="title" 
-                 placeholder="ex. Title"/>
+                        <div className="form-group">
+                            <label htmlFor="postText">Post:</label>
+                            <Field 
+                                as="textarea"
+                                id="postText"
+                                name="postText" 
+                                placeholder="Write your post content here"
+                                className="input-field textarea"
+                            />
+                            <ErrorMessage name="postText" component="span" className="error-message" />
+                        </div>
 
-                <label>Post:</label>
-                <ErrorMessage name="postText" component="span"/>
-                <Field id="inputCreatePost"
-                 name="postText" 
-                 placeholder="ex. post"/>
+                        <div className="form-group">
+                            <label htmlFor="username">Username:</label>
+                            <Field 
+                                id="username"
+                                name="username" 
+                                placeholder="Enter your username"
+                                className="input-field"
+                            />
+                            <ErrorMessage name="username" component="span" className="error-message" />
+                        </div>
 
-                <label>username:</label>
-                <ErrorMessage name="username" component="span"/>
-                <Field id="inputCreatePost"
-                 name="username" 
-                 placeholder="ex. name123"/>
-
-                <button type="submit">Create Post</button>
-
-            </Form>
-}
-        </Formik>
-    </div>
-  )
+                        <button 
+                            type="submit" 
+                            className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+                            disabled={!isValid || isSubmitting}
+                        >
+                            {isSubmitting ? 'Creating Post...' : 'Create Post'}
+                        </button>
+                    </Form>
+                )}
+            </Formik>
+        </div>
+    )
 }
 
 export default CreatePost
